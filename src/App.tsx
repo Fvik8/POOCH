@@ -142,6 +142,7 @@ return (
 <span className="text-2xl font-display font-bold tracking-tight text-slate-800">Pooch</span>
 </a>
 
+{/* Desktop Nav */}
 <div className="hidden md:flex items-center gap-8">
 {navLinks.map((link) => (
 <Button 
@@ -156,6 +157,7 @@ className="text-sm font-medium px-2 py-1"
 <Button variant="primary" className="py-2.5 px-5 text-sm" onClick={onOpenDonate}>Donate Now</Button>
 </div>
 
+{/* Mobile Toggle */}
 <button 
 className="md:hidden p-2 text-slate-600 hover:text-primary transition-colors"
 onClick={() => setIsOpen(!isOpen)}
@@ -164,6 +166,7 @@ onClick={() => setIsOpen(!isOpen)}
 </button>
 </div>
 
+{/* Mobile Menu */}
 <AnimatePresence>
 {isOpen && (
 <motion.div
@@ -245,6 +248,7 @@ animate={{ opacity: 1, scale: 1 }}
 transition={{ duration: 0.8, delay: 0.2 }}
 className="relative"
 >
+{/* Main Hero Illustration Placeholder/Image */}
 <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl bg-orange-50 p-2 border-8 border-white">
 <img 
 src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=1600&h=900" 
@@ -253,6 +257,7 @@ className="w-full h-full object-cover rounded-[2rem]"
 referrerPolicy="no-referrer"
 />
 </div>
+{/* Decorative Elements */}
 <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary rounded-full opacity-20 blur-3xl" />
 <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-primary rounded-full opacity-10 blur-3xl" />
 <motion.div 
@@ -291,17 +296,16 @@ className="absolute bottom-10 -right-6 z-20 bg-white p-4 rounded-2xl shadow-xl b
 const AvailableDogs = ({ onSelectDog }: { onSelectDog: (dog: any) => void }) => {
 const dogs = [
 { id: 1, name: 'Luna', breed: 'Golden Retriever', age: '2 years', size: 'Large', location: 'Munich', img: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=800' },
-// МИЛО - Обновен с новия линк от GitHub
-{ id: 2, name: 'Milo', breed: 'Beagle', age: '6 months', size: 'Medium', location: 'Prague', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/TA-2026-05-02-04-39-56-Ahigh-reso-2408548939.png' },
-// БЕЛА - Вече с линк от GitHub
+{ id: 2, name: 'Milo', breed: 'Beagle', age: '6 months', size: 'Medium', location: 'Prague', img: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=800' },
 { id: 3, name: 'Bella', breed: 'Corgi', age: '3 years', size: 'Small', location: 'Lyon', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/TA-2026-05-02-04-05-00-Ahigh-reso-715981615.png' },
-// КУПЪР - Вече с линк от GitHub
-{ id: 4, name: 'Cooper', breed: 'Border Collie', age: '1 year', size: 'Medium', location: 'Vienna', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/regenerated_image_1777694824998.png' },
+// Купър - Обновен с новия raw линк от GitHub
+{ id: 4, name: 'Cooper', breed: 'Border Collie', age: '1 year', size: 'Medium', location: 'Vienna', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/TA-2026-05-02-04-03-12-Ahigh-reso-800879220.png' },
 { id: 5, name: 'Daisy', breed: 'Dachshund', age: '4 years', size: 'Small', location: 'Berlin', img: 'https://images.unsplash.com/photo-1612195583950-b8fd34c87093?auto=format&fit=crop&q=80&w=800' },
 { id: 6, name: 'Rocky', breed: 'German Shepherd', age: '5 years', size: 'Large', location: 'Madrid', img: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=800' },
 ];
 
 const [filter, setFilter] = useState('All');
+
 const filteredDogs = filter === 'All' ? dogs : dogs.filter(dog => dog.size === filter);
 
 return (
@@ -431,6 +435,7 @@ return (
 <section id="foster" className="py-24">
 <div className="max-w-7xl mx-auto px-6">
 <div className="relative bg-primary rounded-[3rem] p-12 lg:p-20 overflow-hidden text-center text-white">
+{/* Decorative Shapes */}
 <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 <div className="absolute bottom-0 left-0 w-80 h-80 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 <div className="relative z-10 max-w-2xl mx-auto">
@@ -612,6 +617,7 @@ referrerPolicy="no-referrer"
 <Footer />
 
 {/* --- Modals --- */}
+{/* Donation Modal */}
 <Modal 
 isOpen={modalType === 'donate'} 
 onClose={() => setModalType('none')} 
@@ -660,6 +666,7 @@ className="text-center py-12"
 </AnimatePresence>
 </Modal>
 
+{/* Adoption Form */}
 <Modal 
 isOpen={modalType === 'adopt'} 
 onClose={() => { setModalType('none'); setSelectedDog(null); }} 
@@ -704,6 +711,7 @@ className="text-center py-12"
 </AnimatePresence>
 </Modal>
 
+{/* Support / Info Modal */}
 <Modal 
 isOpen={modalType === 'support'} 
 onClose={() => setModalType('none')} 
