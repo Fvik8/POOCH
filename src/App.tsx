@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
 Dog, 
 Heart, 
@@ -20,8 +20,6 @@ Twitter,
 PawPrint,
 CheckCircle2,
 Calendar,
-Filter,
-Info,
 CreditCard,
 Gift
 } from 'lucide-react';
@@ -142,7 +140,6 @@ return (
 <span className="text-2xl font-display font-bold tracking-tight text-slate-800">Pooch</span>
 </a>
 
-{/* Desktop Nav */}
 <div className="hidden md:flex items-center gap-8">
 {navLinks.map((link) => (
 <Button 
@@ -157,7 +154,6 @@ className="text-sm font-medium px-2 py-1"
 <Button variant="primary" className="py-2.5 px-5 text-sm" onClick={onOpenDonate}>Donate Now</Button>
 </div>
 
-{/* Mobile Toggle */}
 <button 
 className="md:hidden p-2 text-slate-600 hover:text-primary transition-colors"
 onClick={() => setIsOpen(!isOpen)}
@@ -166,7 +162,6 @@ onClick={() => setIsOpen(!isOpen)}
 </button>
 </div>
 
-{/* Mobile Menu */}
 <AnimatePresence>
 {isOpen && (
 <motion.div
@@ -224,22 +219,6 @@ Find your dog <ArrowRight className="w-4 h-4" />
 </Button>
 <Button variant="outline" onClick={onOpenSupport}>Support our cause</Button>
 </div>
-<div className="mt-12 flex items-center gap-4">
-<div className="flex -space-x-3">
-{[1, 2, 3, 4].map((i) => (
-<img 
-key={i}
-src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} 
-alt="Success story"
-className="w-10 h-10 rounded-full border-2 border-white"
-referrerPolicy="no-referrer"
-/>
-))}
-</div>
-<p className="text-sm text-slate-500 font-medium">
-<span className="text-slate-800 font-bold">2,400+</span> dogs successfully rehomed this year
-</p>
-</div>
 </motion.div>
 
 <motion.div
@@ -248,7 +227,6 @@ animate={{ opacity: 1, scale: 1 }}
 transition={{ duration: 0.8, delay: 0.2 }}
 className="relative"
 >
-{/* Main Hero Illustration Placeholder/Image */}
 <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl bg-orange-50 p-2 border-8 border-white">
 <img 
 src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=1600&h=900" 
@@ -257,9 +235,6 @@ className="w-full h-full object-cover rounded-[2rem]"
 referrerPolicy="no-referrer"
 />
 </div>
-{/* Decorative Elements */}
-<div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary rounded-full opacity-20 blur-3xl" />
-<div className="absolute -bottom-10 -left-10 w-60 h-60 bg-primary rounded-full opacity-10 blur-3xl" />
 <motion.div 
 animate={{ y: [0, -10, 0] }}
 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -273,20 +248,6 @@ className="absolute top-10 -left-6 z-20 bg-white p-4 rounded-2xl shadow-xl borde
 <p className="font-display font-bold text-slate-800">Berlin, Germany</p>
 </div>
 </motion.div>
-
-<motion.div 
-animate={{ y: [0, 10, 0] }}
-transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-className="absolute bottom-10 -right-6 z-20 bg-white p-4 rounded-2xl shadow-xl border border-slate-50 flex items-center gap-3"
->
-<div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-500">
-<Dog className="w-5 h-5" />
-</div>
-<div>
-<p className="text-xs font-bold text-slate-400 uppercase">New Arrival</p>
-<p className="font-display font-bold text-slate-800">Luna the Golden</p>
-</div>
-</motion.div>
 </motion.div>
 </div>
 </section>
@@ -296,16 +257,17 @@ className="absolute bottom-10 -right-6 z-20 bg-white p-4 rounded-2xl shadow-xl b
 const AvailableDogs = ({ onSelectDog }: { onSelectDog: (dog: any) => void }) => {
 const dogs = [
 { id: 1, name: 'Luna', breed: 'Golden Retriever', age: '2 years', size: 'Large', location: 'Munich', img: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=800' },
-{ id: 2, name: 'Milo', breed: 'Beagle', age: '6 months', size: 'Medium', location: 'Prague', img: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=800' },
+// MILO (Beagle) - Fixed!
+{ id: 2, name: 'Milo', breed: 'Beagle', age: '6 months', size: 'Medium', location: 'Prague', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/TA-2026-05-02-04-39-56-Ahigh-reso-2408548939.png' },
+// BELLA (Corgi)
 { id: 3, name: 'Bella', breed: 'Corgi', age: '3 years', size: 'Small', location: 'Lyon', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/TA-2026-05-02-04-05-00-Ahigh-reso-715981615.png' },
-// Купър - Обновен с новия raw линк от GitHub
+// COOPER (Collie)
 { id: 4, name: 'Cooper', breed: 'Border Collie', age: '1 year', size: 'Medium', location: 'Vienna', img: 'https://raw.githubusercontent.com/Fvik8/POOCH/main/src/assets/images/TA-2026-05-02-04-03-12-Ahigh-reso-800879220.png' },
 { id: 5, name: 'Daisy', breed: 'Dachshund', age: '4 years', size: 'Small', location: 'Berlin', img: 'https://images.unsplash.com/photo-1612195583950-b8fd34c87093?auto=format&fit=crop&q=80&w=800' },
 { id: 6, name: 'Rocky', breed: 'German Shepherd', age: '5 years', size: 'Large', location: 'Madrid', img: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=800' },
 ];
 
 const [filter, setFilter] = useState('All');
-
 const filteredDogs = filter === 'All' ? dogs : dogs.filter(dog => dog.size === filter);
 
 return (
@@ -384,45 +346,33 @@ const goals = [
 {
 icon: <Globe className="w-6 h-6 text-blue-500" />,
 title: "Europe-wide Network",
-description: "We operate across 12 countries, ensuring seamless international adoptions and fostering setups."
+description: "We operate across 12 countries, ensuring seamless international adoptions."
 },
 {
 icon: <Navigation className="w-6 h-6 text-orange-500" />,
 title: "Logistics Support",
-description: "Our dedicated transport teams ensure your new family member arrives safely at your doorstep."
+description: "Our transport teams ensure your new family member arrives safely."
 },
 {
 icon: <Users className="w-6 h-6 text-purple-500" />,
 title: "Local Community",
-description: "Access a supporting network of dog owners, trainers, and vets in your specific region."
+description: "Access a supporting network of dog owners and trainers in your region."
 }
 ];
 
 return (
 <section id="offices" className="py-24 bg-white">
-<div className="max-w-7xl mx-auto px-6">
-<div className="text-center max-w-3xl mx-auto mb-16">
-<h2 className="text-4xl lg:text-5xl mb-4">One mission, one continent.</h2>
-<p className="text-slate-600 text-lg">
-Pooch bridge the gap between rescue shelters and loving homes, no matter where you live in Europe.
-</p>
-</div>
-
+<div className="max-w-7xl mx-auto px-6 text-center">
+<h2 className="text-4xl lg:text-5xl mb-16">One mission, one continent.</h2>
 <div className="grid md:grid-cols-3 gap-8">
 {goals.map((goal, i) => (
-<motion.div 
-key={i}
-whileHover={{ y: -5 }}
-className="bg-slate-50 p-8 rounded-3xl border border-slate-100 transition-all"
->
-<div className="mb-6 inline-flex p-3 bg-white rounded-2xl shadow-sm border border-slate-50">
+<div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+<div className="mb-6 inline-flex p-3 bg-white rounded-2xl shadow-sm">
 {goal.icon}
 </div>
 <h3 className="text-2xl mb-3">{goal.title}</h3>
-<p className="text-slate-600 leading-relaxed">
-{goal.description}
-</p>
-</motion.div>
+<p className="text-slate-600">{goal.description}</p>
+</div>
 ))}
 </div>
 </div>
@@ -435,29 +385,10 @@ return (
 <section id="foster" className="py-24">
 <div className="max-w-7xl mx-auto px-6">
 <div className="relative bg-primary rounded-[3rem] p-12 lg:p-20 overflow-hidden text-center text-white">
-{/* Decorative Shapes */}
-<div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-<div className="absolute bottom-0 left-0 w-80 h-80 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-<div className="relative z-10 max-w-2xl mx-auto">
-<h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight">
-Ready to give a dog <br /> their forever home?
-</h2>
+<h2 className="text-4xl md:text-5xl mb-8">Ready to give a dog <br /> their forever home?</h2>
 <div className="flex flex-wrap justify-center gap-4">
-<Button 
-variant="outline" 
-href="#adopt"
-className="bg-white text-primary border-white px-8 py-4"
->
-Adopt a dog
-</Button>
-<Button 
-variant="outline" 
-onClick={onFosterClick}
-className="border-white/40 text-white px-8 py-4 hover:bg-white/10"
->
-Become a foster
-</Button>
-</div>
+<Button variant="outline" href="#adopt" className="bg-white text-primary border-white">Adopt a dog</Button>
+<Button variant="outline" onClick={onFosterClick} className="border-white/40 text-white">Become a foster</Button>
 </div>
 </div>
 </div>
@@ -469,66 +400,23 @@ const Footer = () => {
 return (
 <footer className="bg-slate-50 pt-20 pb-10">
 <div className="max-w-7xl mx-auto px-6">
-<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
-<div className="col-span-2">
-<a href="/" className="flex items-center gap-2 mb-6">
+<div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+<div className="flex items-center gap-2">
 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
 <PawPrint className="text-white w-5 h-5" />
 </div>
 <span className="text-xl font-display font-bold tracking-tight text-slate-800">Pooch</span>
-</a>
-<p className="text-slate-500 mb-8 max-w-xs">
-Rescuing, sheltering, and rehoming dogs across Europe with love and professional care.
-</p>
+</div>
 <div className="flex gap-4">
 {[Instagram, Facebook, Twitter].map((Icon, i) => (
-<a key={i} href="#" className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<a key={i} href="#" className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-slate-400 hover:text-primary">
 <Icon className="w-5 h-5" />
 </a>
 ))}
 </div>
 </div>
-
-<div>
-<h4 className="font-bold mb-6 text-slate-800">Quick Links</h4>
-<div className="flex flex-col gap-4 text-slate-500 text-sm">
-<a href="#" className="hover:text-primary">Find your dog</a>
-<a href="#" className="hover:text-primary">Fostering guide</a>
-<a href="#" className="hover:text-primary">Become a partner</a>
-<a href="#" className="hover:text-primary">Volunteer</a>
-</div>
-</div>
-
-<div>
-<h4 className="font-bold mb-6 text-slate-800">Charity</h4>
-<div className="flex flex-col gap-4 text-slate-500 text-sm">
-<a href="#" className="hover:text-primary">Success Stories</a>
-<a href="#" className="hover:text-primary">About us</a>
-<a href="#" className="hover:text-primary">Transparency</a>
-<a href="#" className="hover:text-primary">Donate</a>
-</div>
-</div>
-
-<div>
-<h4 className="font-bold mb-6 text-slate-800">Help</h4>
-<div className="flex flex-col gap-4 text-slate-500 text-sm">
-<a href="#" className="hover:text-primary">Contact us</a>
-<a href="#" className="hover:text-primary">FAQ</a>
-<a href="#" className="hover:text-primary">Offices</a>
-<a href="#" className="hover:text-primary">Support</a>
-</div>
-</div>
-</div>
-
-<div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-<p className="text-slate-400 text-xs">
+<div className="pt-8 border-t border-slate-200 text-center text-slate-400 text-xs">
 © 2024 Pooch Europe Charity. Registered Charity #E83210.
-</p>
-<div className="flex gap-6 text-slate-400 text-xs">
-<a href="#" className="hover:text-slate-600">Privacy Policy</a>
-<a href="#" className="hover:text-slate-600">Terms of Service</a>
-<a href="#" className="hover:text-slate-600">Cookies</a>
-</div>
 </div>
 </div>
 </footer>
@@ -544,11 +432,6 @@ const [formSubmitted, setFormSubmitted] = useState(false);
 
 const handleOpenDonate = () => {
 setModalType('donate');
-setFormSubmitted(false);
-};
-
-const handleOpenSupport = () => {
-setModalType('support');
 setFormSubmitted(false);
 };
 
@@ -571,173 +454,75 @@ return (
 <div className="min-h-screen selection:bg-orange-100 selection:text-primary">
 <Navbar onOpenDonate={handleOpenDonate} />
 <main>
-<Hero onOpenSupport={handleOpenSupport} />
+<Hero onOpenSupport={() => setModalType('support')} />
 <AvailableDogs onSelectDog={handleSelectDog} />
 <Mission />
-<section id="stories" className="py-20 overflow-hidden bg-white">
-<div className="max-w-7xl mx-auto px-6">
-<div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-<div className="max-w-2xl">
-<h2 className="text-4xl lg:text-5xl mb-4 text-balance">Heartwarming connections made possible by you.</h2>
-<p className="text-slate-600 text-lg italic">"Best thing we ever did was open our home to Rex. He's not just a dog, he's family." — The Schmidt Family, Vienna</p>
-</div>
-<Button variant="outline" href="#stories">View all stories</Button>
-</div>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-{[
-{ name: 'Rex', location: 'Vienna', img: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=800' },
-{ name: 'Bella', location: 'Lyon', img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=800' },
-{ name: 'Odin', location: 'Copenhagen', img: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800' },
-].map((story, i) => (
-<motion.div 
-key={i}
-whileHover={{ y: -5 }}
-className="group relative h-80 rounded-[2rem] overflow-hidden shadow-lg border-2 border-white"
->
-<img 
-src={story.img} 
-alt={story.name} 
-className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-referrerPolicy="no-referrer"
-/>
-<div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
-<p className="text-2xl font-display font-bold">{story.name}</p>
-<p className="text-sm opacity-80 flex items-center gap-1">
-<MapPin className="w-3 h-3" /> {story.location}
-</p>
-</div>
-</motion.div>
-))}
-</div>
-</div>
-</section>
 <CallToAction onFosterClick={() => setModalType('support')} />
 </main>
-
 <Footer />
 
-{/* --- Modals --- */}
-{/* Donation Modal */}
-<Modal 
-isOpen={modalType === 'donate'} 
-onClose={() => setModalType('none')} 
-title="Support our mission"
->
+<Modal isOpen={modalType === 'donate'} onClose={() => setModalType('none')} title="Support our mission">
 <AnimatePresence mode="wait">
 {!formSubmitted ? (
-<motion.form 
-key="donate-form"
-initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-onSubmit={handleSubmit} className="space-y-6"
->
+<form onSubmit={handleSubmit} className="space-y-6">
 <div className="grid grid-cols-3 gap-3">
 {['€10', '€25', '€50'].map((amt) => (
-<button type="button" key={amt} className="p-4 border-2 border-slate-100 rounded-2xl font-bold text-slate-800 hover:border-primary hover:text-primary transition-all">
-{amt}
-</button>
+<button type="button" key={amt} className="p-4 border-2 border-slate-100 rounded-2xl font-bold hover:border-primary hover:text-primary transition-all">{amt}</button>
 ))}
 </div>
 <div className="space-y-4">
 <div className="relative">
 <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
-<input required placeholder="Card Number" className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20" />
-</div>
-<div className="grid grid-cols-2 gap-4">
-<input required placeholder="MM/YY" className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20" />
-<input required placeholder="CVC" className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20" />
+<input required placeholder="Card Number" className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl" />
 </div>
 </div>
 <Button variant="primary" className="w-full py-4 text-lg">Send Donation</Button>
-<p className="text-center text-xs text-slate-400">Secure payment processed by Pooch Europe Foundation.</p>
-</motion.form>
+</form>
 ) : (
-<motion.div 
-key="success"
-initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-className="text-center py-12"
->
-<div className="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-<CheckCircle2 className="w-10 h-10" />
+<div className="text-center py-12">
+<CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
+<h4 className="text-2xl font-bold">Thank you!</h4>
 </div>
-<h4 className="text-2xl font-bold mb-2">Thank you!</h4>
-<p className="text-slate-500">Your kindness helps us save more lives.</p>
-</motion.div>
 )}
 </AnimatePresence>
 </Modal>
 
-{/* Adoption Form */}
-<Modal 
-isOpen={modalType === 'adopt'} 
-onClose={() => { setModalType('none'); setSelectedDog(null); }} 
-title={selectedDog ? `Adopt ${selectedDog.name}` : 'Application'}
->
+<Modal isOpen={modalType === 'adopt'} onClose={() => { setModalType('none'); setSelectedDog(null); }} title={selectedDog ? `Adopt ${selectedDog.name}` : 'Application'}>
 <AnimatePresence mode="wait">
 {!formSubmitted ? (
-<motion.form 
-key="adopt-form"
-initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-onSubmit={handleSubmit} className="space-y-6"
->
+<form onSubmit={handleSubmit} className="space-y-6">
 {selectedDog && (
-<div className="flex items-center gap-4 p-4 bg-orange-50 rounded-2xl mb-6">
+<div className="flex items-center gap-4 p-4 bg-orange-50 rounded-2xl">
 <img src={selectedDog.img} className="w-16 h-16 rounded-xl object-cover" alt="" referrerPolicy="no-referrer" />
-<div>
-<p className="font-bold text-slate-800">{selectedDog.name}</p>
-<p className="text-xs text-primary font-bold uppercase">{selectedDog.location} Office</p>
-</div>
+<p className="font-bold">{selectedDog.name}</p>
 </div>
 )}
-<div className="space-y-4">
-<input required placeholder="Full Name" className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20" />
-<input required type="email" placeholder="Email Address" className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20" />
-<textarea placeholder="Tell us about your home and experience..." className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20 h-32 resize-none" />
-</div>
+<input required placeholder="Full Name" className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl" />
+<input required type="email" placeholder="Email Address" className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl" />
+<textarea placeholder="Your message..." className="w-full px-4 py-4 bg-slate-50 border-none rounded-2xl h-32 resize-none" />
 <Button variant="primary" className="w-full py-4 text-lg">Submit Application</Button>
-</motion.form>
+</form>
 ) : (
-<motion.div 
-key="success-adopt"
-initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-className="text-center py-12"
->
-<div className="w-20 h-20 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-<CheckCircle2 className="w-10 h-10" />
+<div className="text-center py-12">
+<CheckCircle2 className="w-16 h-16 text-blue-500 mx-auto mb-4" />
+<h4 className="text-2xl font-bold">Application Received</h4>
 </div>
-<h4 className="text-2xl font-bold mb-2">Application Received</h4>
-<p className="text-slate-500">Our local team in {selectedDog?.location} will review it and contact you soon.</p>
-</motion.div>
 )}
 </AnimatePresence>
 </Modal>
 
-{/* Support / Info Modal */}
-<Modal 
-isOpen={modalType === 'support'} 
-onClose={() => setModalType('none')} 
-title="Support Pooch"
->
+<Modal isOpen={modalType === 'support'} onClose={() => setModalType('none')} title="Support Pooch">
 <div className="space-y-6">
-<p className="text-slate-600 leading-relaxed">
-There are many ways you can help us reach our goal of a Europe without stray dogs.
-</p>
-<div className="grid grid-cols-1 gap-4">
 {[
-{ icon: <Gift className="w-5 h-5 text-pink-500" />, title: "In-kind Donations", desc: "Donate food, beds, and toys to our shelters." },
-{ icon: <Users className="w-5 h-5 text-purple-500" />, title: "Volunteer Overseas", desc: "Travel to our offices to help on the ground." },
-{ icon: <Calendar className="w-5 h-5 text-blue-500" />, title: "Foster a Dog", desc: "Provide a temporary home while we find a forever one." }
+{ icon: <Gift className="w-5 h-5 text-pink-500" />, title: "In-kind Donations" },
+{ icon: <Users className="w-5 h-5 text-purple-500" />, title: "Volunteer Overseas" },
+{ icon: <Calendar className="w-5 h-5 text-blue-500" />, title: "Foster a Dog" }
 ].map((item, i) => (
-<div key={i} className="p-5 bg-slate-50 rounded-2xl flex gap-4 hover:bg-slate-100 transition-colors cursor-pointer group">
-<div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-{item.icon}
-</div>
-<div>
-<p className="font-bold text-slate-800">{item.title}</p>
-<p className="text-sm text-slate-500">{item.desc}</p>
-</div>
+<div key={i} className="p-5 bg-slate-50 rounded-2xl flex gap-4">
+<div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm">{item.icon}</div>
+<p className="font-bold self-center">{item.title}</p>
 </div>
 ))}
-</div>
 <Button variant="primary" className="w-full" onClick={() => setModalType('none')}>Got it!</Button>
 </div>
 </Modal>
