@@ -305,8 +305,8 @@ const AvailableDogs = ({ onSelectDog }: { onSelectDog: (dog: any) => void }) => 
   const dogs = [
     { id: 1, name: 'Luna', breed: 'Golden Retriever', age: '2 years', size: 'Large', location: 'Munich', img: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=800' },
     { id: 2, name: 'Milo', breed: 'Beagle', age: '6 months', size: 'Medium', location: 'Prague', img: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=800' },
-    { id: 3, name: 'Bella', breed: 'Corgi', age: '3 years', size: 'Small', location: 'Lyon', img: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=800' },
-    { id: 4, name: 'Cooper', breed: 'Border Collie', age: '1 year', size: 'Medium', location: 'Vienna', img: 'https://images.unsplash.com/photo-1568572933382-74d440d42117?auto=format&fit=crop&q=80&w=800' },
+    { id: 3, name: 'Bella', breed: 'Corgi', age: '3 years', size: 'Small', location: 'Lyon', img: '/src/assets/images/regenerated_image_1777694826702.png' },
+    { id: 4, name: 'Cooper', breed: 'Border Collie', age: '1 year', size: 'Medium', location: 'Vienna', img: '/src/assets/images/regenerated_image_1777694824998.png' },
     { id: 5, name: 'Daisy', breed: 'Dachshund', age: '4 years', size: 'Small', location: 'Berlin', img: 'https://images.unsplash.com/photo-1612195583950-b8fd34c87093?auto=format&fit=crop&q=80&w=800' },
     { id: 6, name: 'Rocky', breed: 'German Shepherd', age: '5 years', size: 'Large', location: 'Madrid', img: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=800' },
   ];
